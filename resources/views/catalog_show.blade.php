@@ -1,1 +1,0 @@
-Vista detalle película {{ $id }}

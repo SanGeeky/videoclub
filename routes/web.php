@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', 'HomeController@getHome');
 
 
 Route::get('/login', function () {
-    return view('login');
+    return view('auth.login');
 });
 
 
@@ -26,21 +24,11 @@ Route::get('/logout', function () {
 });
 
 
-Route::get('/catalog', function () {
-    return view('catalog');
-});
+Route::get('/catalog', 'CatalogController@getIndex');
 
 
-Route::get('/catalog/show/{id}', function ($id) {
-    return view('catalog_show')
-    ->with('id', $id);
-});
+Route::get('/catalog/show/{id}', 'CatalogController@getShow');
 
-Route::get('/catalog/create', function () {
-    return view('catalog_create');
-});
+Route::get('/catalog/create', 'CatalogController@getCreate');
 
-Route::get('/catalog/edit/{id}', function ($id) {
-    return view('catalog_edit')
-    ->with('id', $id);
-});
+Route::get('/catalog/edit/{id}', 'CatalogController@getEdit');

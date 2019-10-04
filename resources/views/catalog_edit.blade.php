@@ -1,1 +1,0 @@
-Modificar Pelicula {{ $id }}

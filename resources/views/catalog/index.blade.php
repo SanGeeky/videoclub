@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    Se ha idooo
+    Index del Catalogich
+    Listado
 @stop

@@ -1,5 +1,5 @@
 @extends('layouts.master')
 
 @section('content')
-    Se ha idooo
+    Vista detalle película {{ $id }}
 @stop
