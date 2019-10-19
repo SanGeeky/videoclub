@@ -7,11 +7,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ url('/assets/bootstrap/css/bootstrap.min.css') }}">    
-    <link rel="stylesheet" href="{{ url('/assets/bootstrap/js/bootstrap.min.js') }}">    
+    <link rel="stylesheet" href="{{ url('/assets/bootstrap/js/bootstrap.min.js') }}">
+    <link rel="stylesheet" href="{{ url('/assets/fontawesome/css/all.css') }}">    
+    <link rel="stylesheet" href="{{ url('/assets/fontawesome/js/all.js') }}">    
+
     
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
-    <title>Hello, world!</title>
+    <title>Video Club!</title>
   </head>
   <body>
     @include("partials.navbar");

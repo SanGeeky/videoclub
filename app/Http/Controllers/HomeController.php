@@ -9,6 +9,7 @@ class HomeController extends Controller
     //
     public function getHome()
     {
-        return view('home');
+        //return view('home');
+        return redirect()->action('CatalogController@getIndex');
     }
 }
