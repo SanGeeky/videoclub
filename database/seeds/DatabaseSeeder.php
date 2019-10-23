@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Movie;
 
 class DatabaseSeeder extends Seeder
 {
@@ -172,16 +173,16 @@ class DatabaseSeeder extends Seeder
             'synopsis' => 'Un joven hastiado de su gris y monótona vida lucha contra el insomnio. En un viaje en avión conoce a un carismático vendedor de jabón que sostiene una teoría muy particular: el perfeccionismo es cosa de gentes débiles; sólo la autodestrucción hace que la vida merezca la pena. Ambos deciden entonces fundar un club secreto de lucha, donde poder descargar sus frustaciones y su ira, que tendrá un éxito arrollador.'
         )
     );
+
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
         self::seedCatalog(); $this->command->info('Tabla catálogo inicializada con datos!');
-        ;
     }
 
     private function seedCatalog()
     {
-        DB::table('movie')->delete();
+        DB::table('movies')->delete();
 
         foreach( $this->arrayPeliculas as $pelicula ) {
             $p = new Movie;
@@ -196,7 +197,9 @@ class DatabaseSeeder extends Seeder
 
             $p->rented = $pelicula['rented'];
 
-            $p->synopsis = $pelicula['synopsis']; $p->save();
+            $p->synopsis = $pelicula['synopsis']; 
+            
+            $p->save();
 
       }
     }

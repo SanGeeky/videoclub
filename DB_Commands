@@ -1,0 +1,17 @@
+1.-php artisan migrate:install
+
+**Ver archivo de php.ini **
+
+2.-php artisan make:migration create_movies_table --create=movies
+
+**Editar el Archivo en DataBAse/Migrations
+
+3.-php artisan migrate
+
+**Crea la tabla en la base desde el archivo migrations
+
+4.-php artisan make:model Movie
+
+**Crea el modelo de datos ORM para la tabla
+
+5.- php artisan db:seed
