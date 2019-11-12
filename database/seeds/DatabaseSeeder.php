@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Movie;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -174,10 +175,40 @@ class DatabaseSeeder extends Seeder
         )
     );
 
+    private $arrayUsers = array(
+        array(
+            'name' => 'admin',
+            'email' => 'admin@videoclub.com', 
+            'password' => 'admin123', 
+        ),
+        array(
+            'name' => 'Daniela Vallejo',
+            'email' => 'danyva@gmail.com', 
+            'password' => 'dany123', 
+        ),
+        array(
+            'name' => 'David Santiago Pinchao',
+            'email' => 'sangeeky@outlook.com', 
+            'password' => 'ensure12', 
+        ),
+        array(
+            'name' => 'John Doe',
+            'email' => 'elduro@durito.com', 
+            'password' => 'durote2019', 
+        ),
+        array(
+            'name' => 'Julian Pinchao',
+            'email' => 'pinpacho@lol.com', 
+            'password' => 'computador8', 
+        )
+    );
+
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
         self::seedCatalog(); $this->command->info('Tabla catálogo inicializada con datos!');
+        // ... Llamada al seed del catálogo     
+        self::seedUsers();     $this->command->info('Tabla usuarios inicializada con datos!');
     }
 
     private function seedCatalog()
@@ -203,4 +234,21 @@ class DatabaseSeeder extends Seeder
 
       }
     }
+
+    private function seedUsers()
+    {
+        DB::table('users')->delete();
+        foreach( $this->arrayUsers as $usuario ) {
+            $user = new User;
+            
+            $user->name = $usuario['name'];
+            
+            $user->email = $usuario['email'];
+            
+            $user->password = bcrypt( $usuario['password'] );
+            
+            $user->save();
+      }
+    }
+
 }

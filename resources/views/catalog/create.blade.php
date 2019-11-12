@@ -12,8 +12,11 @@
             {{-- TODO: Abrir el formulario e indicar el método POST --}}
 
             {{-- TODO: Protección contra CSRF --}}
-<!-- aqui va el <form action=""></form> -->
-         <form action="">
+
+         <form  method="POST">
+
+         {{ csrf_field() }}
+
             <div class="form-group">
                <label for="title">Título</label>
                <input type="text" name="title" id="title" class="form-control">

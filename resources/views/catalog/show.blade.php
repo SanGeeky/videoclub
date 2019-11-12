@@ -4,7 +4,7 @@
     Vista detalle película {{ $pelicula->id }}
     <div class="row">       
         <div class="col-sm-4">           
-            <img src="{{$pelicula['poster']}}" style="width: 20vw"/>              
+            <img src="{{$pelicula->poster}}" style="width: 20vw"/>              
         </div>
         <div class="col-sm-8">           
             <h3>{{$pelicula->title}}</h3>

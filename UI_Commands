@@ -1,0 +1,19 @@
+**laravel version 6 **
+
+--Instalamos las UI que usara laravel
+✗ composer require laravel/ui
+
+--Miramos las opciones
+✗ php artisan ui --help
+
+--Usamos la configuracion para usar UI que use bootstrap
+✗ php artisan ui bootstrap
+
+--Compilamos el bootstrap con npm
+
+✗ npm install && npm run dev 
+
+--- COmando para generar Rutas y vistas necesarias para generar Login de usuarios
+php artisan ui:auth 
+
+php artisan route:list
