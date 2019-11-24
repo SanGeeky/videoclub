@@ -14,18 +14,31 @@
             <span> <b>Director: </b></span>{{ $pelicula->director}}            
             <br><br>
             <strong>Resumen: </strong> {{ $pelicula->synopsis}}
-            <br>
+            <br><br>
             <strong>Estado:</strong> 
             @if($pelicula->rented)
                 Pelicula actualmente alquilada
                 <br><br>
-                <a href="" role="button"class="btn btn-danger">Devolver Pelicula</a>                
+                <form action="{{ action('CatalogController@putReturn', $pelicula->id) }}" method="POST" style="display:inline">
+                    {{ method_field('PUT') }} 
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-warning" style="display:inline"> Devolver Pelicula </button>                
+                </form>
             @else
                 Pelicula disponible
                 <br><br>
-                <a href="" role="button" class="btn btn-primary">Alquilar Pelicula</a>                
+                <form action="{{ action('CatalogController@putRent', $pelicula->id) }}" method="POST" style="display:inline">
+                    @method('PUT')
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-success" style="display:inline"> Alquilar Pelicula </button>             
+                </form>
             @endif
-            <a href="{{ url('/catalog/edit/' . $pelicula->id) }}" role="button" class="btn btn-warning text-white"> <span class="fas fa-pencil-alt"></span> Editar Pelicula</a>
+            <a href="{{ url('/catalog/edit/' . $pelicula->id) }}" role="button" class="btn btn-primary text-white"> <span class="fas fa-pencil-alt"></span> Editar Pelicula</a>            
+            <form action="{{ action('CatalogController@deleteMovie', $pelicula->id) }}" method="POST" style="display:inline">
+                {{ method_field('DELETE') }} 
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-danger" style="display:inline"> Eliminar Pelicula </button>             
+            </form>
             <a href="{{ url('/catalog') }}" role="button" class="btn btn-default border border-dark"> <span class="fas fa-angle-left"></span> Volver al listado</a>
         </div> 
     </div>

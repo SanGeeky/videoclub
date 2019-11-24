@@ -51,7 +51,8 @@ class CatalogController extends Controller
         
         $p->save();
 
-        return view('catalog.index', array('listaPeliculas'=> Movie::all()));
+        notify()->success('Pelicula Añadida Correctamente')->delay(1500);
+        return redirect('catalog');
     }
 
     // Update the info about a movie 
@@ -67,10 +68,48 @@ class CatalogController extends Controller
                 'synopsis' => $movie->synopsis],
             );
 
-        return view('catalog.show', array('pelicula' => Movie::findOrFail($id))); 
+        
+        notify()->success('Pelicula Modificada Correctamente')->delay(1500);
+        return redirect()->action('CatalogController@getShow', [$id]);
+
+        //return view('catalog.show', array('pelicula' => Movie::findOrFail($id))); 
+    }
+
+    // Rent the Movie
+    public function putRent(Request $movie)
+    {
+        $id = $movie->id;
+        Movie::where('id', $id)
+            ->update(['rented' => TRUE]);
+
+        notify()->success('Pelicula Rentada!')->delay(1500);
+        return redirect()->action('CatalogController@getShow', [$id]);
 
     }
 
+    // Return the Movie
+    public function putReturn(Request $movie)
+    {
+        $id = $movie->id;
+        Movie::where('id', $id)
+            ->update(['rented' => FALSE]);
+        
+        notify()->warning('Pelicula Devuelta')->delay(1500);
+        return redirect()->action('CatalogController@getShow', [$id]);
+
+    }
+
+    // Delete a Movie
+    public function deleteMovie(Request $movie)
+    {
+        $id = $movie->id;
+        Movie::where('id', $id)
+            ->delete();
+        
+        notify()->error('Pelicula Devuelta')->delay(1500);
+        return redirect('catalog');
+
+    }
     
 
 }

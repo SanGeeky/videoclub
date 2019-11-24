@@ -17,3 +17,23 @@
 php artisan ui:auth 
 
 php artisan route:list
+
+
+--- Paquete notificaciones laravel
+
+composer require coderatio/laranotify
+composer update
+
+--cargar archivos de laranotify
+php artisan vendor:publish --tag=laranotify-required
+
+--cargar correctamente los archivso
+
+php artisan vendor:publish --tag=laranotify-foundations
+
+
+--hacer middleware
+
+php artisan make:middleware AuthenticateOnceWithBasicAuth
+
+php artisan make:controller APICatalogController --resource --model=Movie
