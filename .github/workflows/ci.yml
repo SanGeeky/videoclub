@@ -46,4 +46,6 @@ jobs:
           elixir-version: ${{ matrix.elixir }}
           otp-version: ${{matrix.otp}}
       - name: Publish Release to HEX Packages
-        run: HEX_API_KEY=$HEX_API_KEY mix hex.publish --yes
+        run: |
+          mix deps.get
+          HEX_API_KEY=$HEX_API_KEY mix hex.publish --yes
