@@ -40,5 +40,10 @@ jobs:
       HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Elixir
+        uses: erlef/setup-elixir@v1
+        with:
+          elixir-version: ${{ matrix.elixir }}
+          otp-version: ${{matrix.otp}}
       - name: Publish Release to HEX Packages
         run: HEX_API_KEY=$HEX_API_KEY mix hex.publish --yes
