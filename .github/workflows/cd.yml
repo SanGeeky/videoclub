@@ -33,5 +33,5 @@ jobs:
           rm -rf deps _build
           mix deps.get
       - name: Publish Release to HEX PM
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: github.event.pull_request.merged == true && github.ref == 'refs/heads/main'
         run: HEX_API_KEY=$HEX_API_KEY mix hex.publish --yes
