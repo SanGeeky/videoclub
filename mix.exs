@@ -13,6 +13,7 @@ defmodule Yestoday.MixProject do
       description: description(),
       source_url: @github_url,
       package: package(),
+      docs: docs(),
       deps: deps()
     ]
   end
@@ -22,7 +23,9 @@ defmodule Yestoday.MixProject do
   end
 
   defp deps do
-    []
+    [
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false}
+    ]
   end
 
   defp description do
@@ -37,6 +40,15 @@ defmodule Yestoday.MixProject do
       links: %{
         "GitHub" => @github_url
       }
+    ]
+  end
+
+  defp docs do
+    [
+      main: "readme",
+      name: "YESTODAY API",
+      source_ref: "v#{@version}",
+      source_url: @github_url
     ]
   end
 end
