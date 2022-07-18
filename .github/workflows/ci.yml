@@ -1,0 +1,44 @@
+name: YESTODAY CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'v*.[0-9]'
+  pull_request:
+
+jobs:
+  test:
+    name: Run tests and format
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        otp: ['22.3']
+        elixir: ['1.13']
+    env:
+      MIX_ENV: test
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Elixir
+        uses: erlef/setup-elixir@v1
+        with:
+          elixir-version: ${{ matrix.elixir }}
+          otp-version: ${{matrix.otp}}
+      - name: Check Formatting
+        run: mix format --check-formatted
+      - name: Run Tests
+        run: mix test
+
+  publish:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        otp: ['22.3']
+        elixir: ['1.13']
+    env:
+      HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Publish Release to HEX Packages
+        run: HEX_API_KEY=$HEX_API_KEY mix hex.publish --yes

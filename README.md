@@ -27,10 +27,10 @@ This line will result with a random phrase like this:
 ```terminal
 This is for u...
     «Broken heart, oh, even if it hurts
-	 That's a story I can't go back to
-	 This short dream oh, your memories
-	 Even today they seem to be unforgettable
-	 If everything is tomorrow then yesterday»
+  That's a story I can't go back to
+  This short dream oh, your memories
+  Even today they seem to be unforgettable
+  If everything is tomorrow then yesterday»
 
   [Doyoung ^^]
 ```

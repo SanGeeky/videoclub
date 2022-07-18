@@ -89,5 +89,3 @@ defmodule Song do
     """
   end
 end
-
-IO.puts(Song.phrase)

@@ -1,28 +1,42 @@
 defmodule Yestoday.MixProject do
   use Mix.Project
 
+  @github_url "https://github.com/SanGeeky/YESTODAY"
+  @version "0.1.0"
+
   def project do
     [
       app: :yestoday,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
+      description: description(),
+      source_url: @github_url,
+      package: package(),
       deps: deps()
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
-    [
-      extra_applications: [:logger]
-    ]
+    []
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
+    []
+  end
+
+  defp description do
+    "Simple API with random phrases of the song YESTODAY from NCT U."
+  end
+
+  defp package do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      description: description(),
+      files: ["lib", "mix.exs", "README*", "LICENSE"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => @github_url
+      }
     ]
   end
 end
