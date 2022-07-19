@@ -9,7 +9,7 @@ Simple API with random motivational, cute and hidden phrases of the song YESTODA
 ```elixir
 def deps do
   [
-    {:yestoday, "~> 0.1.1"}
+    {:yestoday, "~> 0.1.2"}
   ]
 end
 ```

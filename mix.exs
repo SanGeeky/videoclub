@@ -2,7 +2,7 @@ defmodule Yestoday.MixProject do
   use Mix.Project
 
   @github_url "https://github.com/SanGeeky/YESTODAY"
-  @version "0.1.1"
+  @version "0.1.2"
 
   def project do
     [
