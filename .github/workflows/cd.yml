@@ -1,9 +1,9 @@
 name: YESTODAY CD
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      [published]
 
 jobs:
   tests:
@@ -21,6 +21,17 @@ jobs:
         with:
           otp-version: ${{ matrix.otp }}
           elixir-version: ${{ matrix.elixir }}
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-
+
+
       - uses: actions/cache@v2
         with:
           path: deps
