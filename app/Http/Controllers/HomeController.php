@@ -31,7 +31,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return redirect()->action('CatalogController@getIndex');
+        return redirect('catalog');
+        //return redirect()->action('CatalogController@getIndex');
         //return view('home');
     }
 }
